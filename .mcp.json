@@ -1,0 +1,15 @@
+{
+	"mcpServers": {
+		"chakra-ui": {
+			"type": "local",
+			"command": "npx",
+			"args": [
+				"-y",
+				"@chakra-ui/react-mcp"
+			],
+			"tools": [
+				"*"
+			]
+		}
+	}
+}
