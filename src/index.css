@@ -17,6 +17,14 @@ body {
   min-height: 100vh;
 }
 
+.resume-page li {
+  list-style: none;
+}
+
+.resume-page li::before {
+  content: none;
+}
+
 a {
   text-decoration: none;
 }
@@ -26,3 +34,37 @@ img {
   max-width: 100%;
 }
 
+@media print {
+  @page {
+    margin: 14mm;
+    size: auto;
+  }
+
+  body,
+  #root {
+    min-width: 0;
+    min-height: 0;
+    background: #fff !important;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .resume-page,
+  .resume-page > div,
+  .resume-page > div > div {
+    min-height: 0 !important;
+    max-width: none !important;
+    padding: 0 !important;
+    background: #fff !important;
+    color: #1f2937 !important;
+    box-shadow: none !important;
+  }
+
+  .resume-page * {
+    color: #1f2937 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}

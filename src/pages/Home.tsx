@@ -35,6 +35,7 @@ const navLinks = [
   { label: "Skills", href: "#skills" },
   { label: "Projects", href: "#projects" },
   { label: "Certifications", href: "#certs" },
+  { label: "Resume", href: "/resume" },
   { label: "Contact", href: "#contact" },
 ]
 
@@ -104,9 +105,19 @@ export default function Home() {
             </Text>
           </HStack>
 
-          <HStack as="nav" gap={4} wrap="wrap" color="gray.300" fontSize="sm" justify={{ base: "flex-start", sm: "flex-end" }}>
+          <HStack as="nav" gap={2} wrap="wrap" color="gray.300" fontSize="sm" justify={{ base: "flex-start", sm: "flex-end" }}>
             {navLinks.map((item) => (
-              <Link key={item.label} href={item.href} _hover={{ color: "white" }}>
+              <Link
+                key={item.label}
+                href={item.href}
+                px={3}
+                py={2}
+                borderRadius="md"
+                bg="green.700"
+                color="white"
+                _hover={{ bg: "green.600", color: "white", textDecoration: "none" }}
+                _focusVisible={{ outline: "2px solid", outlineColor: "green.300", outlineOffset: "2px" }}
+              >
                 {item.label}
               </Link>
             ))}
@@ -260,7 +271,7 @@ export default function Home() {
               <Text color="gray.200" mb={5}>{project.summary}</Text>
               <HStack wrap="wrap" gap={2}>
                 {project.stack.map((tech) => (
-                  <Badge key={tech} colorScheme="cyan" variant="outline">
+                  <Badge key={tech} colorScheme="green" variant="subtle">
                     {tech}
                   </Badge>
                 ))}
