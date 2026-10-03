@@ -24,7 +24,7 @@ const profileImage = "/tim.jpeg"
 import MainLayout from "../layouts/MainLayout"
 
 const metrics = [
-  { value: "5+", label: "Years in cyber defence" },
+  { value: "6+", label: "Years in cyber defence" },
   { value: "99.98%", label: "Monitoring uptime" },
   { value: "42", label: "Major incidents reduced" },
   { value: "24/7", label: "Threat visibility" },
