@@ -40,21 +40,25 @@ const navLinks = [
 
 const strengths = [
   {
+    slug: "threat-detection",
     title: "Threat Detection",
     description: "Monitoring, detonation, and triage across endpoint, network, and cloud telemetry.",
     icon: FaShieldAlt,
   },
   {
+    slug: "incident-response",
     title: "Incident Response",
     description: "Coordinated containment, root-cause analysis, and rapid business-safe recovery actions.",
     icon: FaBug,
   },
   {
+    slug: "cloud-security",
     title: "Cloud Security",
     description: "IAM reviews, misconfiguration checks, and hardening for Azure and AWS environments.",
     icon: FaCloud,
   },
   {
+    slug: "vulnerability-management",
     title: "Vulnerability Management",
     description: "Patch prioritisation, exposure reduction, and remediation tracking across the estate.",
     icon: FaLock,
@@ -112,14 +116,21 @@ export default function Home() {
 
       <Stack direction={{ base: "column", lg: "row" }} align="center" justify="space-between" py={{ base: 10, lg: 20 }} gap={{ base: 8, lg: 10 }}>
         <Box flex="1" w="full">
-          <Badge colorScheme="cyan" variant="subtle" px={3} py={1} borderRadius="full">
+          <Badge
+            bg="green.600"
+            color="white"
+            px={5}
+            py={2}
+            fontSize={{ base: "md", md: "lg" }}
+            borderRadius="full"
+          >
             Security Analyst • Blue Team • Cloud Defence
           </Badge>
           <Heading as="h1" mt={6} lineHeight="1.05" color="white" fontSize={{ base: "2xl", sm: "3xl", md: "4xl", lg: "5xl" }}>
             Protecting systems, reducing risk, and catching threats before they spread.
           </Heading>
           <Text fontSize={{ base: "md", md: "lg" }} mt={6} color="gray.300" maxW="650px">
-            I help organisations strengthen security operations, investigate incidents, and improve resilience through data-driven defence strategies.
+            I help organizations improve their security, investigate incidents, and stay protected from cyber threats using data-driven security solutions.
           </Text>
 
           <Stack direction={{ base: "column", sm: "row" }} mt={8} gap={4}>
@@ -205,7 +216,16 @@ export default function Home() {
             const Icon = item.icon
 
             return (
-              <Box key={item.title} bg="whiteAlpha.100" borderRadius="2xl" p={6} border="1px solid" borderColor="whiteAlpha.200">
+              <Link
+                key={item.title}
+                href={`/projects/${item.slug}`}
+                display="block"
+                borderRadius="2xl"
+                _hover={{ textDecoration: "none", transform: "translateY(-4px)" }}
+                transition="transform 0.2s ease"
+                _focusVisible={{ outline: "2px solid", outlineColor: "cyan.300", outlineOffset: "3px" }}
+              >
+              <Box bg="whiteAlpha.100" borderRadius="2xl" p={6} border="1px solid" borderColor="whiteAlpha.200" h="full">
                 <Box bg="cyan.500" width="46px" height="46px" borderRadius="md" display="grid" placeItems="center" mb={5}>
                   <Icon size={20} color="white" />
                 </Box>
@@ -213,7 +233,11 @@ export default function Home() {
                   {item.title}
                 </Heading>
                 <Text color="gray.300">{item.description}</Text>
+                <Text color="cyan.300" mt={5} fontSize="sm" fontWeight="semibold">
+                  View sample projects →
+                </Text>
               </Box>
+              </Link>
             )
           })}
         </SimpleGrid>
@@ -311,10 +335,7 @@ export default function Home() {
       </Box>
 
       <Box as="footer" py={8} color="gray.400" fontSize="sm">
-        <Flex justify="space-between" direction={{ base: "column", sm: "row" }} gap={2}>
-          <Text>© 2026 Timothee D.T</Text>
-          <Text>Security Analyst portfolio</Text>
-        </Flex>
+        <Text textAlign="center">© 2026 Timothee DJOUOKEP TCHOUAMOU</Text>
       </Box>
     </MainLayout>
   )
