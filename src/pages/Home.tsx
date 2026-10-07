@@ -13,22 +13,12 @@ import {
 } from "@chakra-ui/react"
 import {
   FaArrowRight,
-  FaBug,
-  FaCloud,
   FaGithub,
   FaLinkedin,
-  FaLock,
-  FaShieldAlt,
 } from "react-icons/fa"
 const profileImage = "/tim.jpeg"
 import MainLayout from "../layouts/MainLayout"
-
-const metrics = [
-  { value: "6+", label: "Years in cyber defence" },
-  { value: "99.98%", label: "Monitoring uptime" },
-  { value: "42", label: "Major incidents reduced" },
-  { value: "24/7", label: "Threat visibility" },
-]
+import { projects } from "../data/projects"
 
 const navLinks = [
   { label: "About", href: "#about" },
@@ -39,48 +29,18 @@ const navLinks = [
   { label: "Contact", href: "#contact" },
 ]
 
-const strengths = [
+const focusAreas = [
   {
-    slug: "threat-detection",
-    title: "Threat Detection",
-    description: "Monitoring, detonation, and triage across endpoint, network, and cloud telemetry.",
-    icon: FaShieldAlt,
+    title: "Threat monitoring",
+    description: "Monitor security signals to support detection, investigation, and informed response.",
   },
   {
-    slug: "incident-response",
-    title: "Incident Response",
-    description: "Coordinated containment, root-cause analysis, and rapid business-safe recovery actions.",
-    icon: FaBug,
+    title: "Cloud environment monitoring",
+    description: "Monitor cloud environments for relevant security events and changes.",
   },
   {
-    slug: "cloud-security",
-    title: "Cloud Security",
-    description: "IAM reviews, misconfiguration checks, and hardening for Azure and AWS environments.",
-    icon: FaCloud,
-  },
-  {
-    slug: "vulnerability-management",
-    title: "Vulnerability Management",
-    description: "Patch prioritisation, exposure reduction, and remediation tracking across the estate.",
-    icon: FaLock,
-  },
-]
-
-const projects = [
-  {
-    title: "SOC Automation Playbook",
-    summary: "Reduced manual triage time by 38% using detections, enrichment scripts, and ticket orchestration.",
-    stack: ["Python", "Splunk", "Jira"],
-  },
-  {
-    title: "Cloud Hardening Initiative",
-    summary: "Hardened IAM, encryption, and network policies across multi-account AWS workloads.",
-    stack: ["AWS", "IAM", "Terraform"],
-  },
-  {
-    title: "Threat Intelligence Feed Review",
-    summary: "Built a structured review process to tune detections and reduce false positives by 27%.",
-    stack: ["Threat Intel", "SIEM", "YARA"],
+    title: "Rapid threat containment",
+    description: "Focus on timely, coordinated containment to limit the impact of security incidents.",
   },
 ]
 
@@ -135,13 +95,13 @@ export default function Home() {
             fontSize={{ base: "md", md: "lg" }}
             borderRadius="full"
           >
-            Security Analyst • Blue Team • Cloud Defence
+            Security Analyst • Blue Team • Threat Containment
           </Badge>
           <Heading as="h1" mt={6} lineHeight="1.05" color="white" fontSize={{ base: "2xl", sm: "3xl", md: "4xl", lg: "5xl" }}>
-            Protecting systems, reducing risk, and catching threats before they spread.
+            Blue team operations, cloud monitoring, and rapid threat containment.
           </Heading>
           <Text fontSize={{ base: "md", md: "lg" }} mt={6} color="gray.300" maxW="650px">
-            I help organizations improve their security, investigate incidents, and stay protected from cyber threats using data-driven security solutions.
+            I specialize in cloud environment monitoring and rapid threat containment to protect enterprise networks.
           </Text>
 
           <Stack direction={{ base: "column", sm: "row" }} mt={8} gap={4}>
@@ -172,38 +132,29 @@ export default function Home() {
         </Box>
       </Stack>
 
-      <SimpleGrid columns={{ base: 1, sm: 2, xl: 4 }} gap={5} pb={16}>
-        {metrics.map((metric) => (
-          <Box key={metric.label} bg="whiteAlpha.100" borderRadius="xl" p={5} border="1px solid" borderColor="whiteAlpha.200">
-            <Text fontSize={{ base: "2xl", md: "3xl" }} fontWeight="bold" color="cyan.300">{metric.value}</Text>
-            <Text color="gray.300" mt={2}>{metric.label}</Text>
-          </Box>
-        ))}
-      </SimpleGrid>
-
       <Box id="about" py={16}>
         <Box maxW="760px">
           <Text fontSize="sm" letterSpacing="0.18em" textTransform="uppercase" color="cyan.300">
             About
           </Text>
           <Heading as="h2" size="lg" mt={4} color="white">
-            Security operations with a focus on prevention, detection, and resilient response.
+            Practical security work, backed by public projects and hands-on labs.
           </Heading>
         </Box>
 
         <SimpleGrid columns={{ base: 1, lg: 2 }} gap={8} mt={10}>
           <Box bg="whiteAlpha.100" borderRadius="2xl" p={8} border="1px solid" borderColor="whiteAlpha.200">
             <Text color="gray.200">
-              I specialise in helping businesses reduce exposure, validate controls, and improve operational readiness across both internal and cloud-based environments.
+              My GitHub portfolio documents hands-on work across SIEM and file integrity monitoring, network traffic analysis, security tooling, and infrastructure labs.
             </Text>
           </Box>
           <Box bg="whiteAlpha.100" borderRadius="2xl" p={8} border="1px solid" borderColor="whiteAlpha.200">
             <Box as="ul" listStyleType="none" p={0} m={0} color="gray.200">
               {[
-                "Threat hunting and incident analysis",
-                "Security awareness and policy improvements",
-                "Vulnerability prioritisation and remediation support",
-                "Continuous monitoring and KPI reporting",
+                "SIEM monitoring and threat detection",
+                "Cloud environment monitoring",
+                "Threat containment and investigation",
+                "Security and systems administration labs",
               ].map((item) => (
                 <Box as="li" key={item} mb={3}>
                   • {item}
@@ -216,41 +167,21 @@ export default function Home() {
 
       <Box id="skills" py={16}>
         <Text fontSize="sm" letterSpacing="0.18em" textTransform="uppercase" color="cyan.300">
-          Core capabilities
+          Focus areas
         </Text>
         <Heading as="h2" size="lg" mt={4} color="white">
-          Tools and disciplines I use every day.
+          Focus areas from my GitHub profile.
         </Heading>
 
-        <SimpleGrid columns={{ base: 1, md: 2, xl: 4 }} gap={6} mt={10}>
-          {strengths.map((item) => {
-            const Icon = item.icon
-
-            return (
-              <Link
-                key={item.title}
-                href={`/projects/${item.slug}`}
-                display="block"
-                borderRadius="2xl"
-                _hover={{ textDecoration: "none", transform: "translateY(-4px)" }}
-                transition="transform 0.2s ease"
-                _focusVisible={{ outline: "2px solid", outlineColor: "cyan.300", outlineOffset: "3px" }}
-              >
-              <Box bg="whiteAlpha.100" borderRadius="2xl" p={6} border="1px solid" borderColor="whiteAlpha.200" h="full">
-                <Box bg="cyan.500" width="46px" height="46px" borderRadius="md" display="grid" placeItems="center" mb={5}>
-                  <Icon size={20} color="white" />
-                </Box>
+        <SimpleGrid columns={{ base: 1, md: 3 }} gap={6} mt={10}>
+          {focusAreas.map((area) => (
+              <Box key={area.title} bg="whiteAlpha.100" borderRadius="2xl" p={6} border="1px solid" borderColor="whiteAlpha.200" h="full">
                 <Heading as="h3" size="md" mb={3} color="white">
-                  {item.title}
+                  {area.title}
                 </Heading>
-                <Text color="gray.300">{item.description}</Text>
-                <Text color="cyan.300" mt={5} fontSize="sm" fontWeight="semibold">
-                  View sample projects →
-                </Text>
+                <Text color="gray.300">{area.description}</Text>
               </Box>
-              </Link>
-            )
-          })}
+          ))}
         </SimpleGrid>
       </Box>
 
@@ -259,23 +190,50 @@ export default function Home() {
           Selected work
         </Text>
         <Heading as="h2" size="lg" mt={4} color="white">
-          Projects and operational improvements.
+          Selected projects from my public repositories.
         </Heading>
 
-        <SimpleGrid columns={{ base: 1, lg: 3 }} gap={6} mt={10}>
+        <SimpleGrid columns={{ base: 1, md: 2, xl: 3 }} gap={6} mt={10}>
           {projects.map((project) => (
-            <Box key={project.title} bg="whiteAlpha.100" borderRadius="2xl" p={6} border="1px solid" borderColor="whiteAlpha.200">
-              <Badge colorScheme="green" variant="subtle" mb={4}>
+            <Box key={project.slug} bg="whiteAlpha.100" borderRadius="2xl" p={6} border="1px solid" borderColor="whiteAlpha.200">
+              <Link href={`/projects/${project.slug}`} color="white" _hover={{ color: "cyan.300", textDecoration: "none" }}>
+                <Heading as="h3" size="md" mb={4}>
                 {project.title}
-              </Badge>
+                </Heading>
+              </Link>
               <Text color="gray.200" mb={5}>{project.summary}</Text>
               <HStack wrap="wrap" gap={2}>
-                {project.stack.map((tech) => (
+                {project.technologies.map((tech) => (
                   <Badge key={tech} colorScheme="green" variant="subtle">
                     {tech}
                   </Badge>
                 ))}
               </HStack>
+              <Link
+                href={project.repository}
+                target="_blank"
+                rel="noopener noreferrer"
+                color="cyan.300"
+                display="inline-flex"
+                alignItems="center"
+                gap={2}
+                mt={6}
+                aria-label={`View ${project.title} on GitHub`}
+              >
+                <FaGithub /> View repository
+              </Link>
+              {project.liveUrl && (
+                <Link
+                  href={project.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  color="cyan.300"
+                  display="block"
+                  mt={2}
+                >
+                  Visit website
+                </Link>
+              )}
             </Box>
           ))}
         </SimpleGrid>

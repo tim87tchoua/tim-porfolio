@@ -1,5 +1,4 @@
 import {
-  Badge,
   Box,
   Button,
   Flex,
@@ -12,67 +11,74 @@ import {
   Text,
 } from "@chakra-ui/react"
 import MainLayout from "../layouts/MainLayout"
+import { projects as portfolioProjects } from "../data/projects"
 
-const technicalSkills = [
-  "Microsoft Sentinel",
-  "Defender for Endpoint",
-  "KQL",
-  "Splunk",
-  "SPL",
-  "Wazuh SIEM",
-  "Sysmon",
-  "Suricata NIDS",
-  "MITRE ATT&CK",
-  "AWS",
-  "Terraform",
-  "Tenable",
-  "Vulnerability Management",
-  "Python",
-  "PowerShell",
-  "Jira",
-  "Power BI",
+const skills = [
+  "System Administration",
+  "Help Desk Support",
+  "Ticketing Systems",
+  "Imaging & Deployments",
+  "Network Configuration",
+  "Security Frameworks",
+  "Cloud Management",
+  "Burp Suite & Metasploit",
+  "Azure",
+  "Python, Bash & SQL",
+  "SIEM & Splunk",
+  "Active Directory",
+  "Network Troubleshooting",
+  "Automation",
+  "Server Administration",
+  "Linux",
+  "Windows & Office 365",
+  "Wireshark Traffic Analysis",
 ]
 
-const softSkills = [
-  "Analytical problem-solving",
-  "Incident investigation",
-  "Clear communication",
-  "Cross-functional collaboration",
-  "Risk-based prioritization",
-  "Attention to detail",
-]
-
-const projects = [
+const resumeProjects = [
   {
-    title: "Enterprise SIEM & Telemetry Pipeline (Wazuh & Sysmon)",
-    date: "05/2026 – Present",
-    bullets: [
-      "Architected centralized Wazuh SIEM infrastructure on Ubuntu Server with multi-system agent groups for continuous endpoint monitoring.",
-      "Integrated Microsoft Sysmon, Windows event logs, and automated VirusTotal hash scanning to improve threat visibility and malware triage.",
-      "Reduced unauthorized file changes by 60% using Wazuh File Integrity Monitoring (FIM) and Whodata tracking.",
-    ],
+    title: "Flask Brute Force Lab",
+    summary: "Developed a local-only ethical brute-force testing lab using Python and Flask to simulate and understand password attack vectors.",
+    slug: "flask-brute-force-lab",
   },
   {
-    title: "Threat Hunting & Adversary Simulation (MITRE ATT&CK)",
-    date: "05/2026 – Present",
-    bullets: [
-      "Mapped telemetry to MITRE ATT&CK in Wazuh SIEM and validated detection logic against Invoke-Atomic Red Team simulations, including PowerShell abuse and credential dumping.",
-      "Applied Wazuh Security Configuration Assessment (SCA) and automated vulnerability scanning to support PCI DSS, NIST, GDPR, and HIPAA security baselines.",
-    ],
+    title: "Helpdesk Ticketing Lab",
+    summary: "Set up a Dockerized osTicket helpdesk environment for simulating real-world ticket workflows and admin management.",
+    slug: "helpdesk-ticketing-lab",
   },
   {
-    title: "Network Intrusion Detection & Automated Incident Response",
-    date: "05/2026 – Present",
-    bullets: [
-      "Integrated Suricata NIDS with Wazuh SIEM to detect web attacks, including SQL injection and cross-site scripting (XSS).",
-      "Reduced threat mitigation time to under 10 seconds by deploying Wazuh Active Response scripts to block RDP brute-force activity and disable rogue users.",
-    ],
+    title: "Python CLI Toolkit",
+    summary: "Built a suite of command-line tools in Python for security and networking tasks, including IP lookup, password generation, and file hashing.",
+    slug: "python-cli-toolkit",
+  },
+  {
+    title: "Vulnerability Scanner (Python + Flask)",
+    summary: "Created a web application in Flask where users can input URLs to run basic backend vulnerability scans.",
+    slug: "vulnerability-scanner",
+  },
+  {
+    title: "Linux User Permissions Management Lab",
+    summary: "Designed a practical lab using Bash scripting to manage users, groups, and permissions on Linux systems, with features like bulk user creation and auditing.",
+  },
+  {
+    title: "Linux Apache Web Server Lab",
+    summary: 'Installed and configured Apache2 on a Debian-based Linux VM with "systemctl" service control and localhost verification.',
+    slug: "linux-apache-webserver",
+  },
+  {
+    title: "Python Backup Script Lab",
+    summary: "This lab demonstrates how to create a Python script that automates the backup of files or directories. It compresses selected folders into a .zip archive and stores it in a designated backup directory.",
+    slug: "python-backup-script-lab",
+  },
+  {
+    title: "Wireshark Capture Lab",
+    summary: "This project captures and analyzes live network traffic using Wireshark on macOS.",
+    slug: "wireshark-capture-lab",
   },
 ]
 
 function SectionHeading({ children }: { children: React.ReactNode }) {
   return (
-    <Heading as="h2" fontSize="xl" color="cyan.300" mb={2} textTransform="uppercase" letterSpacing="0.08em">
+    <Heading as="h2" fontSize="xl" color="gray.900" mb={2} textTransform="uppercase" letterSpacing="0.08em">
       {children}
     </Heading>
   )
@@ -82,10 +88,10 @@ export default function Resume() {
   return (
     <MainLayout className="resume-page">
       <Flex className="resume-actions no-print" justify="space-between" align="center" gap={4} mb={8} wrap="wrap">
-        <Link href="/" color="cyan.300" _hover={{ color: "white" }}>
+        <Link href="/" color="gray.800" _hover={{ color: "black" }}>
           ← Back to portfolio
         </Link>
-        <Button colorScheme="green" onClick={() => window.print()}>
+        <Button bg="gray.900" color="white" _hover={{ bg: "gray.700" }} onClick={() => window.print()}>
           Print / Save as PDF
         </Button>
       </Flex>
@@ -93,11 +99,11 @@ export default function Resume() {
       <Box maxW="1000px" mx="auto" bg="white" color="gray.800" borderRadius="2xl" p={{ base: 5, sm: 8, md: 12 }} boxShadow="0 20px 60px rgba(0,0,0,0.25)">
         <Flex justify="space-between" align="flex-start" gap={6} wrap="wrap">
           <Box>
-            <Heading as="h1" fontSize={{ base: "3xl", md: "5xl" }} color="gray.900" lineHeight="1.1">
+            <Heading as="h1" fontSize={{ base: "2xl", md: "4xl" }} color="gray.900" lineHeight="1.1">
               Timothee DJOUOKEP TCHOUAMOU
             </Heading>
-            <Text mt={3} textAlign="center" fontSize={{ base: "lg", md: "2xl" }} fontWeight="semibold" color="green.700" w="full">
-              Security Analyst
+            <Text mt={3} textAlign="center" fontSize={{ base: "lg", md: "2xl" }} fontWeight="semibold" color="gray.800" w="full">
+              Security Analyst • Blue Team
             </Text>
           </Box>
         </Flex>
@@ -105,7 +111,7 @@ export default function Resume() {
         <Flex gap={2} mt={5} justify="center" align="center" wrap="nowrap" fontSize="sm" color="gray.700" whiteSpace="nowrap" overflowX="auto">
           <Text flexShrink={0}>Silver Spring, Maryland</Text>
           <Text aria-hidden="true">·</Text>
-          <Text flexShrink={0}>U.S. Citizen · USA</Text>
+          <Text flexShrink={0}>U.S. Citizen</Text>
           <Text aria-hidden="true">·</Text>
           <Text flexShrink={0}>240-360-7191</Text>
           <Text aria-hidden="true">·</Text>
@@ -114,6 +120,8 @@ export default function Resume() {
           <Link href="https://www.linkedin.com/in/timothee-djouokep-tchouamou-a369183a6/" target="_blank" rel="noopener noreferrer" flexShrink={0}>LinkedIn</Link>
           <Text aria-hidden="true">·</Text>
           <Link href="https://github.com/tim87tchoua" target="_blank" rel="noopener noreferrer" flexShrink={0}>GitHub</Link>
+          <Text aria-hidden="true">·</Text>
+          <Link href="https://tim-porfolio.vercel.app/" target="_blank" rel="noopener noreferrer" flexShrink={0}>Portfolio</Link>
         </Flex>
 
         <Separator my={7} borderColor="gray.300" />
@@ -125,6 +133,34 @@ export default function Resume() {
               Security Analyst with 6+ years of experience across security operations and SIEM engineering. Skilled in threat detection, incident response, cloud security, and vulnerability management, using tools including Microsoft Sentinel, Defender for Endpoint, Entra ID, Splunk, KQL, AWS, Terraform, Tenable, and Jira to improve detection quality, accelerate response, and reduce security risk.
             </Text>
           </Box>
+
+          <SimpleGrid columns={{ base: 1, md: 2 }} gap={8}>
+            <Box>
+              <SectionHeading>Education</SectionHeading>
+              <Heading as="h3" fontSize="md" color="gray.900">
+                Bachelor of Science (B.S.) in Mathematics and Computer Science
+              </Heading>
+              <Text color="gray.700" mt={1}>University of Yaoundé 1, Cameroon · 2007 – 2011</Text>
+            </Box>
+
+            <Box>
+              <SectionHeading>Certification</SectionHeading>
+              <Heading as="h3" fontSize="md" color="gray.900">
+                Google Cybersecurity Professional Certificate
+              </Heading>
+              <Text color="gray.700" mt={1}>Coursera · 01/2026 – 07/2026</Text>
+              <Link
+                href="https://www.coursera.org/account/accomplishments/specialization/certificate/58BE6XNZ9T9G"
+                target="_blank"
+                rel="noopener noreferrer"
+                color="gray.800"
+                fontSize="sm"
+              >
+                Verify credential
+              </Link>
+              <Text color="gray.700" mt={2}>CompTIA Security+</Text>
+            </Box>
+          </SimpleGrid>
 
           <Box>
             <SectionHeading>Professional Experience</SectionHeading>
@@ -173,104 +209,58 @@ export default function Resume() {
           </Box>
 
           <Box>
-            <SectionHeading>Key Engineering Projects</SectionHeading>
-            <Stack gap={6}>
-              {projects.map((project) => (
-                <Box key={project.title} breakInside="avoid">
-                  <Flex justify="space-between" gap={3} wrap="wrap" mb={2}>
-                    <Heading as="h3" fontSize="lg" color="gray.900">{project.title}</Heading>
-                    <Text color="gray.600" whiteSpace="nowrap">{project.date}</Text>
-                  </Flex>
-                  <Stack as="ul" gap={1} pl={5} color="gray.700" listStyleType="none">
-                    {project.bullets.map((bullet) => (
-                      <Text as="li" key={bullet} lineHeight="tall">- {bullet}</Text>
-                    ))}
-                  </Stack>
-                </Box>
-              ))}
+            <SectionHeading>Projects</SectionHeading>
+            <Stack as="ul" gap={3} pl={0} color="gray.700" listStyleType="none">
+              {resumeProjects.map((project) => {
+                const repositoryProject = portfolioProjects.find((item) => item.slug === project.slug)
+
+                return (
+                  <Box as="li" key={project.title} breakInside="avoid">
+                    <Text lineHeight="tall">
+                      <strong>• {project.title}</strong>
+                      <br />
+                      {project.summary}
+                    </Text>
+                    {repositoryProject && (
+                      <HStack gap={4} mt={1}>
+                        <Link href={repositoryProject.repository} target="_blank" rel="noopener noreferrer" color="gray.800" fontSize="sm">
+                          View repository
+                        </Link>
+                        {repositoryProject.liveUrl && (
+                          <Link href={repositoryProject.liveUrl} target="_blank" rel="noopener noreferrer" color="gray.800" fontSize="sm">
+                            Visit website
+                          </Link>
+                        )}
+                      </HStack>
+                    )}
+                  </Box>
+                )
+              })}
             </Stack>
           </Box>
         </Stack>
 
         <Stack gap={5}>
           <Box>
-            <SectionHeading>Key Impact</SectionHeading>
-            <SimpleGrid columns={{ base: 1, sm: 3 }} gap={4}>
-              {[
-                { metric: "60%", label: "fewer unauthorized file changes through Wazuh FIM and Whodata tracking" },
-                { metric: "<10 sec", label: "threat mitigation using automated Wazuh response actions" },
-                { metric: "3", label: "integrated monitoring layers: endpoint telemetry, SIEM, and network IDS" },
-              ].map((impact) => (
-                <Box key={impact.metric} bg="green.50" borderRadius="lg" p={4} border="1px solid" borderColor="green.100">
-                  <Text fontSize="2xl" fontWeight="bold" color="green.700">{impact.metric}</Text>
-                  <Text fontSize="sm" color="gray.700" mt={1}>{impact.label}</Text>
+            <SectionHeading>Skills</SectionHeading>
+            <SimpleGrid columns={{ base: 1, sm: 2, md: 4 }} gap={3}>
+              {skills.map((skill) => (
+                <Box key={skill} bg="white" borderRadius="lg" px={4} py={3} border="1px solid" borderColor="gray.300">
+                  <Text color="gray.700" fontSize="sm" fontWeight="medium">{skill}</Text>
                 </Box>
               ))}
             </SimpleGrid>
           </Box>
 
-          <Box>
-            <SectionHeading>Technical & Soft Skills</SectionHeading>
-            <SimpleGrid columns={{ base: 1, md: 2 }} gap={6}>
-              <Box>
-                <Text fontWeight="bold" color="gray.900" mb={3}>Technical Skills</Text>
-                <HStack wrap="wrap" gap={2}>
-                  {technicalSkills.map((skill) => (
-                    <Badge key={skill} colorScheme="green" variant="subtle">{skill}</Badge>
-                  ))}
-                </HStack>
-              </Box>
-              <Box>
-                <Text fontWeight="bold" color="gray.900" mb={3}>Soft Skills</Text>
-                <HStack wrap="wrap" gap={2}>
-                  {softSkills.map((skill) => (
-                    <Badge key={skill} colorScheme="gray" variant="subtle">{skill}</Badge>
-                  ))}
-                </HStack>
-              </Box>
-            </SimpleGrid>
-          </Box>
-
-          <SimpleGrid columns={{ base: 1, md: 2 }} gap={8}>
+          <Stack gap={7}>
             <Box>
-              <SectionHeading>Education</SectionHeading>
-              <Heading as="h3" fontSize="md" color="gray.900">
-                Bachelor of Science (B.S.) in Mathematics and Computer Science
-              </Heading>
-              <Text color="gray.700" mt={1}>University of Yaoundé 1, Cameroon · 2007 – 2011</Text>
-              <Stack as="ul" gap={1} pl={5} mt={3} color="gray.700" listStyleType="none">
-                <Text as="li">- Graduated in the top 10% of the class.</Text>
-                <Text as="li">- Applied algorithms and statistical modeling in 5+ capstone projects, improving computational efficiency by up to 40%.</Text>
-                <Text as="li">- Built and deployed 3 software solutions using Python and C++ for campus departments.</Text>
-              </Stack>
-            </Box>
-
-            <Stack gap={7}>
-              <Box>
-                <SectionHeading>Certification</SectionHeading>
-                <Heading as="h3" fontSize="md" color="gray.900">
-                  Google Cybersecurity Professional Certificate
-                </Heading>
-                <Text color="gray.700" mt={1}>Coursera · 01/2026 – 07/2026</Text>
-                <Link
-                  href="https://www.coursera.org/account/accomplishments/specialization/certificate/58BE6XNZ9T9G"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  color="green.700"
-                  fontSize="sm"
-                >
-                  Verify credential
-                </Link>
-                <Text color="gray.700" mt={2}>CompTIA Security+</Text>
-              </Box>
-
-              <Box>
-                <SectionHeading>Languages</SectionHeading>
+              <SectionHeading>Languages</SectionHeading>
+              <SimpleGrid columns={{ base: 1, sm: 2 }} gap={2}>
                 <Text color="gray.700">French — Native</Text>
                 <Text color="gray.700">English — Full professional proficiency</Text>
-              </Box>
-            </Stack>
-          </SimpleGrid>
+              </SimpleGrid>
+            </Box>
+          </Stack>
 
           <Box>
             <SectionHeading>Interests & Hobbies</SectionHeading>

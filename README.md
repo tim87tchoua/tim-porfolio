@@ -1,6 +1,6 @@
-# Security Analyst Portfolio
+# Timothee TCHOUAMOU | Security Analyst Portfolio
 
-A Vite + React + Chakra UI portfolio for a cybersecurity-focused professional.
+A Vite + React + Chakra UI portfolio reflecting the public GitHub profile of Timothee TCHOUAMOU. It highlights blue-team operations, cloud environment monitoring, threat containment, and selected hands-on projects from the `tim87tchoua` GitHub account.
 
 ## Scripts
 
@@ -11,4 +11,5 @@ A Vite + React + Chakra UI portfolio for a cybersecurity-focused professional.
 
 ## Purpose
 
-This portfolio highlights cyber defence capabilities, incident response experience, cloud security knowledge, and selected project outcomes in a single-page responsive layout.
+The homepage and résumé use a shared catalog of public GitHub repositories. Project details link back to their source repositories; focus areas are based on the GitHub profile bio.
+# Python-CLI-Toolkit
